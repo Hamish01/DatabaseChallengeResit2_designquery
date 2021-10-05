@@ -40,7 +40,7 @@ CREATE TABLE MenuItem(
     ServesPerUnit INT Not NULL CHECK(len(ServesPerUnit)>0),
     UnitPrice MONEY Not NULL
 );
-CREATE TABLE "Order"(
+CREATE TABLE "Order"(              
     ClientID INT FOREIGN KEY REFERENCES Client,
     OrderDate Date ,
     DeliveryAddress NVARCHAR(MAX) Not Null,
@@ -91,3 +91,10 @@ INSERT INTO OrderLine(ItemId, ClientID, OrderDate, Qty) values ('3216', '15', '2
 INSERT INTO OrderLine(ItemId, ClientID, OrderDate, Qty) values ('4326', '15', '2021-09-20', '1')
 INSERT INTO OrderLine(ItemId, ClientID, OrderDate, Qty) values ('3216', '18', '2021-09-30', '1')
 INSERT INTO OrderLine(ItemId, ClientID, OrderDate, Qty) values ('4327', '18', '2021-09-30', '1')
+
+--task 4 - incomplete
+SELECT Name, OrderDate
+FROM OrderLine
+LEFT JOIN Client
+ON OrderLine.ClientID = Client.ClientID
+
